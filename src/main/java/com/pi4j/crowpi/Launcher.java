@@ -1,12 +1,35 @@
 package com.pi4j.crowpi;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import com.pi4j.context.Context;
-import com.pi4j.crowpi.applications.*;
-import com.pi4j.crowpi.helpers.CrowPiPlatform;
+import com.pi4j.crowpi.applications.ButtonApp;
+import com.pi4j.crowpi.applications.ButtonMatrixApp;
+import com.pi4j.crowpi.applications.BuzzerApp;
+import com.pi4j.crowpi.applications.ExampleApp;
+import com.pi4j.crowpi.applications.HumiTempApp;
+import com.pi4j.crowpi.applications.IrReceiverApp;
+import com.pi4j.crowpi.applications.LcdDisplayApp;
+import com.pi4j.crowpi.applications.LedMatrixApp;
+import com.pi4j.crowpi.applications.LightSensorApp;
+import com.pi4j.crowpi.applications.PirMotionSensorApp;
+import com.pi4j.crowpi.applications.RelayApp;
+import com.pi4j.crowpi.applications.RfidApp;
+import com.pi4j.crowpi.applications.ServoMotorApp;
+import com.pi4j.crowpi.applications.SevenSegmentApp;
+import com.pi4j.crowpi.applications.SoundSensorApp;
+import com.pi4j.crowpi.applications.StepMotorApp;
+import com.pi4j.crowpi.applications.TiltSensorApp;
+import com.pi4j.crowpi.applications.TouchSensorApp;
+import com.pi4j.crowpi.applications.UltrasonicDistanceSensorApp;
+import com.pi4j.crowpi.applications.VibrationMotorApp;
 import com.pi4j.crowpi.helpers.SingletonAppHelper;
+
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Model.CommandSpec;
@@ -114,11 +137,11 @@ public final class Launcher implements Runnable {
         // This loop will either run only once or forever, depending on the state of `demoMode`
         do {
             // Initialize Pi4J context
-            pi4j = CrowPiPlatform.buildNewContext();
-            // Run the application
-            getTargetInteractively(targets).run();
-            // Clean up
-            pi4j.shutdown();
+//            pi4j = CrowPiPlatform.buildNewContext();
+//            // Run the application
+//            getTargetInteractively(targets).run();
+//            // Clean up
+//            pi4j.shutdown();
         } while (demoMode);
     }
 

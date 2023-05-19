@@ -13,13 +13,11 @@ open module com.pi4j.crowpi {
     requires com.pi4j;
     requires com.pi4j.library.pigpio;
     requires com.pi4j.plugin.pigpio;
-    requires com.pi4j.plugin.raspberrypi;
     uses com.pi4j.extension.Extension;
     uses com.pi4j.provider.Provider;
 
     // SLF4J Modules
     requires org.slf4j;
-    requires org.slf4j.simple;
 
     // PicoCLI Modules
     requires info.picocli;

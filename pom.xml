@@ -26,7 +26,7 @@
 
         <!-- Project Dependencies -->
         <java.version>11</java.version>
-        <pi4j.version>2.2.0</pi4j.version>
+        <pi4j.version>2.8.0</pi4j.version>
         <slf4j.version>1.7.32</slf4j.version>
         <picocli.version>4.6.1</picocli.version>
         <junit.version>5.9.0</junit.version>

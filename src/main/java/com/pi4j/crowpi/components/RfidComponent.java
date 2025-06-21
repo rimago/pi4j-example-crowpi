@@ -86,14 +86,26 @@ public class RfidComponent extends MFRC522 {
      * @param spiBaud      SPI baud rate
      */
     public RfidComponent(Context pi4j, Integer gpioResetPin, int spiChannel, int spiBaud) {
-        super(
-            pi4j.create(buildResetPinConfig(pi4j, gpioResetPin)),
-            pi4j.create(buildSpiConfig(pi4j, spiChannel, spiBaud))
-        );
+    	this(
+	        pi4j.create(buildResetPinConfig(pi4j, gpioResetPin)),
+	        pi4j.create(buildSpiConfig(pi4j, spiChannel, spiBaud))
+	        );
+    }
+    
+    public RfidComponent(Context pi4j, Integer gpioResetPin, int bus, Integer channel, int spiBaud) {
+    	this(
+    	        pi4j.create(buildResetPinConfig(pi4j, gpioResetPin)),
+    	        pi4j.create(Spi.newConfigBuilder(pi4j)
+		            .id("rfid-spi"+bus)
+		            .name("RFID SPI via LinuxFS")
+		            .provider("linuxfs-spi")
+		            .bus(bus)
+		            .channel(channel)
+		            .baud(spiBaud)
+		            .build()
+		            )
+    	        );
 
-        this.cardDetectedHandler = new AtomicReference<>();
-        this.pollOnlyNewCards = new AtomicBoolean(true);
-        this.scheduler = Executors.newSingleThreadScheduledExecutor();
     }
 
     /**

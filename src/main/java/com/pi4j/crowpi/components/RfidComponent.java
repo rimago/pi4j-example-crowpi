@@ -107,6 +107,17 @@ public class RfidComponent extends MFRC522 {
     	        );
 
     }
+    
+    public RfidComponent(DigitalOutput dio, Spi spi) {
+        super(
+            dio,
+            spi
+        );
+
+        this.cardDetectedHandler = new AtomicReference<>();
+        this.pollOnlyNewCards = new AtomicBoolean(true);
+        this.scheduler = Executors.newSingleThreadScheduledExecutor();
+    }
 
     /**
      * Sets or disables the handler for any new card which gets in the proximity of the PCD.
